@@ -1,0 +1,7 @@
+{
+  "name": "tomadatoscovid",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

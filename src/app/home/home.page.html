@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Registro de Datos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+
+    <form [formGroup]="formGroupRep" (ngSubmit)="guardar()">
+      <ion-item>
+        <ion-label position="stacked">Cédula</ion-label>
+        <input  maxlength="10" (change)="consultarCedula()" class="native-input sc-ion-input-md ng-untouched ng-pristine ng-invalid" formControlName="cedula" [textMask]="{mask: numberMask}" style="padding-left: 0px;"  type="tel" />  
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nombres y Apellidos</ion-label>
+        <ion-input type="text"  formControlName="nombres" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Edad</ion-label>
+        <!-- <ion-input type="text"  formControlName="telefono" ></ion-input> -->
+        <input  maxlength="3" class="native-input sc-ion-input-md ng-untouched ng-pristine ng-invalid" formControlName="edad" [textMask]="{mask: numberMask}" style="padding-left: 0px;"  type="tel" />  
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Sexo</ion-label>
+        <ion-select interface="popover" formControlName="sexo">
+          <ion-select-option *ngFor="let tipoSexo of tiposSexo" [value]="tipoSexo">{{tipoSexo.descripcion}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Dirección de domicilio</ion-label>
+        <ion-input type="text"  formControlName="direccion" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Télefono</ion-label>
+        <!-- <ion-input type="text"  formControlName="telefono" ></ion-input> -->
+        <input  maxlength="10" class="native-input sc-ion-input-md ng-untouched ng-pristine ng-invalid" formControlName="telefono" [textMask]="{mask: numberMask}" style="padding-left: 0px;"  type="tel" />  
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Correo Eletrónico</ion-label>
+        <ion-input type="text"  formControlName="email" ></ion-input>
+      </ion-item>
+      <ion-list-header color="primary" (click)="showDatosPrincipales()">
+        <ion-label>Posicionamiento</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label position="stacked">Latitud</ion-label>
+        <ion-input disabled type="text"  formControlName="latitud" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Longitud</ion-label>
+        <ion-input disabled type="text"  formControlName="longitud" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Dirección de Toma de Pruebas</ion-label>
+        <ion-input type="text"  formControlName="direccionPruebas" ></ion-input>
+      </ion-item>
+    </form>
+  </ion-list>
+  <ion-list>
+    <ion-radio-group    >
+      <ion-list-header color="primary">
+        <ion-label>
+          Situación Persona
+        </ion-label>
+      </ion-list-header>
+  
+      <ion-item   *ngFor="let estado of estadosPaciente">
+        <ion-label>{{estado}}</ion-label>
+        <ion-radio (click)="radioChecked(estado)"></ion-radio>
+      </ion-item> 
+    </ion-radio-group>
+  </ion-list>
+  <!-- <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer"
+        href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div> -->
+</ion-content>
+<ion-footer   >
+  <ion-button color="primary"  expand="full" (click)="guardar()" [disabled]="formGroupRep.invalid" (tap)="submitForm()">Guardar</ion-button>
+</ion-footer> 
